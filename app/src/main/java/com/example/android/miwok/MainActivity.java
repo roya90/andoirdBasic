@@ -21,6 +21,9 @@ import android.os.TestLooperManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,73 +33,43 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
-
-        TextView numberTV = (TextView) findViewById(R.id.numbers);
-        numberTV.setOnClickListener(generalActivityListener);
-
+        // Defining all the textViews.
+        TextView numbersTV = (TextView) findViewById(R.id.numbers);
+        numbersTV.setOnClickListener(generalOnClickListener);
         TextView phrasesTV = (TextView) findViewById(R.id.phrases);
-        phrasesTV.setOnClickListener(generalActivityListener);
-
-        TextView familyTV= (TextView) findViewById(R.id.family);
-        familyTV.setOnClickListener(generalActivityListener);
-
-        TextView colorTV= (TextView) findViewById(R.id.colors);
-        colorTV.setOnClickListener(generalActivityListener);
+        phrasesTV.setOnClickListener(generalOnClickListener);
+        TextView familyTV = (TextView) findViewById(R.id.family);
+        familyTV.setOnClickListener(generalOnClickListener);
+        TextView colorTV = (TextView) findViewById(R.id.colors);
+        colorTV.setOnClickListener(generalOnClickListener);
     }
-//
-//    public void startNumber (View view){
-//
-//
-//
-//    }
-//    View.OnClickListener numberActivityListener = new View.OnClickListener(){
-//        @Override
-//        public void onClick (View v){
-//            startNumber(v);
-//        }
-//    };
-//
-//
-//    View.OnClickListener phrasesActivityListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//
-//        }
-//    };
-//
 
+    // generating an onClickListener object and calling the appropriate intent with corresponding
+    // textView.
 
-    View.OnClickListener generalActivityListener = new View.OnClickListener() {
+    View.OnClickListener generalOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            if (v.getId()== R.id.family){
-                Intent intentFamily = new Intent(MainActivity.this, Family.class);
-                startActivity(intentFamily);
-
+            if (v.getId()== R.id.numbers){
+                Intent intent = new Intent(v.getContext(), Numbers.class);
+                startActivity(intent);
 
             }
-            else if (v.getId()==R.id.colors){
-                Intent intentColor= new Intent (MainActivity.this, Colors.class);
-                startActivity(intentColor);
-
+            else if (v.getId()== R.id.phrases){
+                Intent intent = new Intent(v.getContext(), Pharases.class);
+                startActivity(intent);
             }
-            else if (v.getId()==R.id.phrases){
-                Intent intentPhrases = new Intent(MainActivity.this, Pharases.class);
-                startActivity(intentPhrases);
-
+            else if (v.getId()== R.id.family){
+                Intent intent = new Intent(v.getContext(), Family.class);
+                startActivity(intent);
             }
-            else if (v.getId()==R.id.numbers){
-                Intent intentNumber = new Intent(MainActivity.this,Numbers.class);
-                startActivity(intentNumber);
-
+            else if (v.getId()== R.id.colors){
+                Intent intent = new Intent(v.getContext(), Colors.class);
+                startActivity(intent);
             }
 
 
         }
     };
-
-
-
 
 }
